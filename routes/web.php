@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CtlFuenteFondoController;
+use App\Http\Controllers\CtlEstadoProyectoController;
+use App\Http\Controllers\CtlInstitucionController;
+use App\Http\Controllers\MntProyectoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
+
+Route::resource('ctl-fuente-fondos', CtlFuenteFondoController::class);
+Route::resource('ctl-estado-proyecto', CtlEstadoProyectoController::class);
+Route::resource('ctl-institucion', CtlInstitucionController::class);
+Route::resource('mnt-proyectos', MntProyectoController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

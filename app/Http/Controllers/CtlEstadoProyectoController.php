@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CtlEstadoProyecto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class CtlEstadoProyectoController
@@ -61,7 +62,7 @@ class CtlEstadoProyectoController extends Controller
         $ctlEstadoProyecto = CtlEstadoProyecto::create($request->all());
 
         return redirect()->route('ctl-estado-proyectos.index')
-            ->with('success', 'CtlEstadoProyecto created successfully.');
+            ->with('success', 'estado de proyecto creado .');
     }
 
     /**
@@ -104,7 +105,7 @@ class CtlEstadoProyectoController extends Controller
         $ctlEstadoProyecto->update($request->all());
 
         return redirect()->route('ctl-estado-proyectos.index')
-            ->with('success', 'CtlEstadoProyecto updated successfully');
+            ->with('success', 'estado de proyecto actualizado exitosamente.');
     }
 
     /**
@@ -114,9 +115,19 @@ class CtlEstadoProyectoController extends Controller
      */
     public function destroy($id)
     {
-        $ctlEstadoProyecto = CtlEstadoProyecto::find($id)->delete();
+        DB::beginTransaction();
+
+        try {
+            $ctlEstadoProyecto = CtlEstadoProyecto::find($id)->delete();
+            DB::commit();
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('ctl-estado-proyectos.index')
+                ->with('success', 'No se puede eliminar el registro, está siendo utilizado.');
+        }
 
         return redirect()->route('ctl-estado-proyectos.index')
-            ->with('success', 'CtlEstadoProyecto deleted successfully');
+            ->with('success', 'Estado de proyecto eliminado exitosamente.');
     }
 }

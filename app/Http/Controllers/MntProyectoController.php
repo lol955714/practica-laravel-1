@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\CtlEstadoProyecto;
 use App\Models\CtlFuenteFondo;
 use App\Models\CtlInstitucion;
+use Illuminate\Support\Facades\DB;
 
 
 /**
@@ -34,7 +35,7 @@ class MntProyectoController extends Controller
      */
     public function index()
     {
-        $mntProyectos = MntProyecto::with('ctlEstadoProyecto','ctlFuenteFondo','ctlInstitucion')->paginate();
+        $mntProyectos = MntProyecto::with('ctlEstadoProyecto', 'ctlFuenteFondo', 'ctlInstitucion')->paginate();
 
         return view('mnt-proyecto.index', compact('mntProyectos'))
             ->with('i', (request()->input('page', 1) - 1) * $mntProyectos->perPage());
@@ -68,7 +69,7 @@ class MntProyectoController extends Controller
         $mntProyecto = MntProyecto::create($request->all());
 
         return redirect()->route('mnt-proyectos.index')
-            ->with('success', 'MntProyecto created successfully.');
+            ->with('success', 'Proyecto creado.');
     }
 
     /**
@@ -79,7 +80,7 @@ class MntProyectoController extends Controller
      */
     public function show($id)
     {
-        $mntProyecto = MntProyecto::with('ctlEstadoProyecto','ctlFuenteFondo','ctlInstitucion')->find($id);
+        $mntProyecto = MntProyecto::with('ctlEstadoProyecto', 'ctlFuenteFondo', 'ctlInstitucion')->find($id);
 
         return view('mnt-proyecto.show', compact('mntProyecto'));
     }
@@ -115,7 +116,7 @@ class MntProyectoController extends Controller
         $mntProyecto->update($request->all());
 
         return redirect()->route('mnt-proyectos.index')
-            ->with('success', 'MntProyecto updated successfully');
+            ->with('success', 'Proyecto actualizado.');
     }
 
     /**
@@ -125,9 +126,20 @@ class MntProyectoController extends Controller
      */
     public function destroy($id)
     {
-        $mntProyecto = MntProyecto::find($id)->delete();
+
+        DB::beginTransaction();
+
+        try {
+            $mntProyecto = MntProyecto::find($id)->delete();
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('mnt-proyectos.index')
+                ->with('success', 'No se puede eliminar el registro, está siendo utilizado.');
+        }
+
 
         return redirect()->route('mnt-proyectos.index')
-            ->with('success', 'MntProyecto deleted successfully');
+            ->with('success', 'Proyecto eliminado');
     }
 }

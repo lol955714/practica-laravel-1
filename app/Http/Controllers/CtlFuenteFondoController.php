@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CtlFuenteFondo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class CtlFuenteFondoController
@@ -22,7 +23,7 @@ class CtlFuenteFondoController extends Controller
         $this->middleware('auth');
     }
 
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -60,7 +61,7 @@ class CtlFuenteFondoController extends Controller
         $ctlFuenteFondo = CtlFuenteFondo::create($request->all());
 
         return redirect()->route('ctl-fuente-fondos.index')
-            ->with('success', 'CtlFuenteFondo created successfully.');
+            ->with('success', 'Fuente de fondo creada correctamente');
     }
 
     /**
@@ -103,7 +104,7 @@ class CtlFuenteFondoController extends Controller
         $ctlFuenteFondo->update($request->all());
 
         return redirect()->route('ctl-fuente-fondos.index')
-            ->with('success', 'CtlFuenteFondo updated successfully');
+            ->with('success', 'fuente actualizada correctamente');
     }
 
     /**
@@ -113,9 +114,20 @@ class CtlFuenteFondoController extends Controller
      */
     public function destroy($id)
     {
-        $ctlFuenteFondo = CtlFuenteFondo::find($id)->delete();
+
+
+        DB::beginTransaction();
+
+        try {
+            $ctlFuenteFondo = CtlFuenteFondo::find($id)->delete();
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('ctl-fuente-fondos.index')
+            ->with('success', 'No se puede eliminar el registro, está siendo utilizado.');
+        }
 
         return redirect()->route('ctl-fuente-fondos.index')
-            ->with('success', 'CtlFuenteFondo deleted successfully');
+            ->with('success', 'fuente eliminada correctamente');
     }
 }

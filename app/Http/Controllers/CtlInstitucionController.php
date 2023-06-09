@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CtlInstitucion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class CtlInstitucionController
@@ -60,7 +61,7 @@ class CtlInstitucionController extends Controller
         $ctlInstitucion = CtlInstitucion::create($request->all());
 
         return redirect()->route('ctl-institucion.index')
-            ->with('success', 'CtlInstitucion created successfully.');
+            ->with('success', 'Institucion creada .');
     }
 
     /**
@@ -103,7 +104,7 @@ class CtlInstitucionController extends Controller
         $ctlInstitucion->update($request->all());
 
         return redirect()->route('ctl-institucion.index')
-            ->with('success', 'CtlInstitucion updated successfully');
+            ->with('success', 'Institución actualizada correctamente.');
     }
 
     /**
@@ -113,9 +114,20 @@ class CtlInstitucionController extends Controller
      */
     public function destroy($id)
     {
-        $ctlInstitucion = CtlInstitucion::find($id)->delete();
+
+
+        DB::beginTransaction();
+
+        try {
+            $ctlInstitucion = CtlInstitucion::find($id)->delete();
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('ctl-institucion.index')
+            ->with('success', 'No se puede eliminar el registro, está siendo utilizado.');
+        }
 
         return redirect()->route('ctl-institucion.index')
-            ->with('success', 'CtlInstitucion deleted successfully');
+            ->with('success', 'Institución eliminada correctamente.');
     }
 }

@@ -15,11 +15,13 @@
                             <span id="card_title">
                                 {{ __('Mantenimiento de Proyectos') }}
                             </span>
-
                              <div class="float-right">
                                 <a href="{{ route('mnt-proyectos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Agregar') }}
                                 </a>
+                                 <a href="{{ route('reporte.proyectos.pdf') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                     {{ __('Listado a pdf') }}
+                                 </a>
                               </div>
                         </div>
                     </div>
@@ -45,7 +47,7 @@
 										<th>Fuente Fondos</th>
 										<th>Estado Proyecto</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,11 +63,11 @@
 											<td>{{ $mntProyecto->ctlInstitucion->nombre }}</td>
 											<td>{{ $mntProyecto->ctlFuenteFondo->nombre }}</td>
 											<td>{{ $mntProyecto->ctlEstadoProyecto->nombre }}</td>
-
                                             <td>
                                                 <form action="{{ route('mnt-proyectos.destroy',$mntProyecto->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('mnt-proyectos.show',$mntProyecto->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('mnt-proyectos.edit',$mntProyecto->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('mnt-proyectos.show',$mntProyecto->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Detalle') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('reporte.proyecto.pdf',$mntProyecto->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('PDF') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('mnt-proyectos.edit',$mntProyecto->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>

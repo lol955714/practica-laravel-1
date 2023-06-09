@@ -5,6 +5,7 @@ use App\Http\Controllers\CtlFuenteFondoController;
 use App\Http\Controllers\CtlEstadoProyectoController;
 use App\Http\Controllers\CtlInstitucionController;
 use App\Http\Controllers\MntProyectoController;
+use App\Http\Controllers\ReportesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,5 +27,8 @@ Route::resource('ctl-institucion', CtlInstitucionController::class);
 Route::resource('mnt-proyectos', MntProyectoController::class);
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/reporte/proyecto/{id}', [ReportesController::Class, 'proyectoPdf'])->name('reporte.proyecto.pdf');
+Route::get('/reporte/proyectos/', [ReportesController::Class, 'listadoProyectoPdf'])->name('reporte.proyectos.pdf');

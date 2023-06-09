@@ -14,7 +14,11 @@
                             <span class="card-title">{{ __('Ver') }} Proyecto</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('mnt-proyectos.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary"
+                               href="{{ route('mnt-proyectos.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-success "
+                               href="{{ route('reporte.proyecto.pdf',$mntProyecto->id) }}"><i
+                                    class="fa fa-fw fa-eye"></i> {{ __('Exportar a PDF') }}</a>
                         </div>
                     </div>
 

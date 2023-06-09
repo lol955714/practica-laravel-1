@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('ctl-fuente-fondos', CtlFuenteFondoController::class);
-Route::resource('ctl-estado-proyecto', CtlEstadoProyectoController::class);
+Route::resource('ctl-estado-proyectos', CtlEstadoProyectoController::class);
 Route::resource('ctl-institucion', CtlInstitucionController::class);
 Route::resource('mnt-proyectos', MntProyectoController::class);
 

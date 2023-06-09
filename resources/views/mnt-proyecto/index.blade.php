@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Mnt Proyecto') }}
+                                {{ __('Mantenimiento de Proyectos') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('mnt-proyectos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Agregar') }}
                                 </a>
                               </div>
                         </div>
@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Nombre</th>
 										<th>Codigo</th>
 										<th>Descripcion</th>
@@ -52,7 +52,7 @@
                                     @foreach ($mntProyectos as $mntProyecto)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $mntProyecto->nombre }}</td>
 											<td>{{ $mntProyecto->codigo }}</td>
 											<td>{{ $mntProyecto->descripcion }}</td>

@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Ctl Fuente Fondo') }}
+                                {{ __('Catálogo de fuentes de fondo') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('ctl-fuente-fondos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Agregar') }}
                                 </a>
                               </div>
                         </div>
@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Nombre</th>
 										<th>Codigo</th>
 										<th>Descripcion</th>
@@ -50,7 +50,7 @@
                                     @foreach ($ctlFuenteFondos as $ctlFuenteFondo)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $ctlFuenteFondo->nombre }}</td>
 											<td>{{ $ctlFuenteFondo->codigo }}</td>
 											<td>{{ $ctlFuenteFondo->descripcion }}</td>

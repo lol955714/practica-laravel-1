@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Ctl Estado Proyecto</span>
+                        <span class="card-title">{{ __('Crear') }} Estado Proyecto</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('ctl-estado-proyectos.store') }}"  role="form" enctype="multipart/form-data">

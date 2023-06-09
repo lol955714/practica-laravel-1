@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Ctl Estado Proyecto</span>
+                        <span class="card-title">{{ __('Actualizar') }} Estado Proyecto</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('ctl-estado-proyectos.update', $ctlEstadoProyecto->id) }}"  role="form" enctype="multipart/form-data">

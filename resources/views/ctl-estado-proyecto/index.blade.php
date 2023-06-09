@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Ctl Estado Proyecto') }}
+                                {{ __('Catálogo Estado Proyecto') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('ctl-estado-proyectos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Agregar') }}
                                 </a>
                               </div>
                         </div>
@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Nombre</th>
 										<th>Codigo</th>
 										<th>Color</th>
@@ -49,7 +49,7 @@
                                     @foreach ($ctlEstadoProyectos as $ctlEstadoProyecto)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $ctlEstadoProyecto->nombre }}</td>
 											<td>{{ $ctlEstadoProyecto->codigo }}</td>
 											<td>{{ $ctlEstadoProyecto->color }}</td>

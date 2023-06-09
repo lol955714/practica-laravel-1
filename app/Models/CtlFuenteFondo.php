@@ -27,6 +27,7 @@ class CtlFuenteFondo extends Model
      * @var string
      */
     protected $table = 'ctl_fuente_fondos';
+    public $timestamps = false;
 
     static $rules = [
 		'nombre' => 'required',
@@ -34,7 +35,6 @@ class CtlFuenteFondo extends Model
 		'descripcion' => 'required',
 		'color' => 'required',
 		'icono' => 'required',
-		'estado' => 'required',
     ];
 
     protected $perPage = 20;

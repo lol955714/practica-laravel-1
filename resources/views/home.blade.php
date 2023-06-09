@@ -20,19 +20,19 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a href="{{ route('ctl-fuente-fondos.index') }}" class="btn btn-primary">{{ __('Catálogo de estados de proyecto') }}</a>
+                                        <a href="{{ route('ctl-estado-proyectos.index') }}" class="btn btn-primary">{{ __('Catálogo de estados de proyecto') }}</a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a href="{{ route('ctl-fuente-fondos.index') }}" class="btn btn-primary">{{ __('Catálogo de instituciones') }}</a>
+                                        <a href="{{ route('ctl-institucion.index') }}" class="btn btn-primary">{{ __('Catálogo de instituciones') }}</a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a href="{{ route('ctl-fuente-fondos.index') }}" class="btn btn-primary">{{ __('Mantenimiento de proyectos') }}</a>
+                                        <a href="{{ route('mnt-proyectos.index') }}" class="btn btn-primary">{{ __('Mantenimiento de proyectos') }}</a>
                                     </div>
                                 </div>
                             </div>

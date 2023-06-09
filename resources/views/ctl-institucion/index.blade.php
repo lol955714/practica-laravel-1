@@ -44,7 +44,7 @@
 										<th>Color</th>
 										<th>Estado</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,15 +58,15 @@
 											<td>{{ $ctlInstitucion->telefono }}</td>
 											<td>{{ $ctlInstitucion->email }}</td>
 											<td>{{ $ctlInstitucion->color }}</td>
-											<td>{{ $ctlInstitucion->estado }}</td>
+											<td>{{ $ctlInstitucion->estado ? 'Activo' : 'Inactivo' }}</td>
 
                                             <td>
                                                 <form action="{{ route('ctl-institucion.destroy',$ctlInstitucion->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('ctl-institucion.show',$ctlInstitucion->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('ctl-institucion.edit',$ctlInstitucion->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('ctl-institucion.show',$ctlInstitucion->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Detalle') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('ctl-institucion.edit',$ctlInstitucion->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

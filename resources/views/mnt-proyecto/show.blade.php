@@ -14,7 +14,7 @@
                             <span class="card-title">{{ __('Ver') }} Proyecto</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('mnt-proyectos.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary" href="{{ route('mnt-proyectos.index') }}"> {{ __('Regresar') }}</a>
                         </div>
                     </div>
 
@@ -42,15 +42,15 @@
                         </div>
                         <div class="form-group">
                             <strong>Id Establecimiento:</strong>
-                            {{ $mntProyecto->id_establecimiento }}
+                            {{ $mntProyecto->ctlInstitucion->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Id Fuente Fondos:</strong>
-                            {{ $mntProyecto->id_fuente_fondos }}
+                            {{ $mntProyecto->ctlFuenteFondo->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Id Estado Proyecto:</strong>
-                            {{ $mntProyecto->id_estado_proyecto }}
+                            {{ $mntProyecto->ctlEstadoProyecto->nombre }}
                         </div>
 
                     </div>

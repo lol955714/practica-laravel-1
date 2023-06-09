@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('descripcion', 250);
             $table->string('color', 250);
             $table->string('icono', 250);
-            $table->boolean('estado');
+            $table->boolean('estado')->default(false);
         });
     }
 

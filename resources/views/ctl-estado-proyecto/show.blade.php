@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $ctlEstadoProyecto->estado }}
+                            {{ $ctlEstadoProyecto->estado ? 'Activo' : 'Inactivo' }}
                         </div>
 
                     </div>

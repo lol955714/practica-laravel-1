@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $ctlFuenteFondo->estado }}
+                            {{ $ctlFuenteFondo->estado ? 'Activo' : 'Inactivo' }}
                         </div>
 
                     </div>

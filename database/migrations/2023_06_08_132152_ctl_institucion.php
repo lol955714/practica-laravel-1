@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('telefono', 250);
             $table->string('email', 250);
             $table->string('color', 250);
-            $table->boolean('estado');
+            $table->boolean('estado')->default(false);
         });
     }
 

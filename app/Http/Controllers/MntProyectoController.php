@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\MntProyecto;
 use Illuminate\Http\Request;
+use App\Models\CtlEstadoProyecto;
+use App\Models\CtlFuenteFondo;
+use App\Models\CtlInstitucion;
+
 
 /**
  * Class MntProyectoController
@@ -30,7 +34,7 @@ class MntProyectoController extends Controller
      */
     public function index()
     {
-        $mntProyectos = MntProyecto::paginate();
+        $mntProyectos = MntProyecto::with('ctlEstadoProyecto','ctlFuenteFondo','ctlInstitucion')->paginate();
 
         return view('mnt-proyecto.index', compact('mntProyectos'))
             ->with('i', (request()->input('page', 1) - 1) * $mntProyectos->perPage());
@@ -44,7 +48,11 @@ class MntProyectoController extends Controller
     public function create()
     {
         $mntProyecto = new MntProyecto();
-        return view('mnt-proyecto.create', compact('mntProyecto'));
+        $ctlEstadoProyectos = CtlEstadoProyecto::where('estado', true)->get();
+        $ctlFuenteFondo = CtlFuenteFondo::where('estado', true)->get();
+        $ctlInstitucion = CtlInstitucion::where('estado', true)->get();
+
+        return view('mnt-proyecto.create', compact('mntProyecto', 'ctlEstadoProyectos', 'ctlFuenteFondo', 'ctlInstitucion'));
     }
 
     /**
@@ -71,7 +79,7 @@ class MntProyectoController extends Controller
      */
     public function show($id)
     {
-        $mntProyecto = MntProyecto::find($id);
+        $mntProyecto = MntProyecto::with('ctlEstadoProyecto','ctlFuenteFondo','ctlInstitucion')->find($id);
 
         return view('mnt-proyecto.show', compact('mntProyecto'));
     }
@@ -85,8 +93,12 @@ class MntProyectoController extends Controller
     public function edit($id)
     {
         $mntProyecto = MntProyecto::find($id);
+        $ctlEstadoProyectos = CtlEstadoProyecto::where('estado', true)->get();
+        $ctlFuenteFondo = CtlFuenteFondo::where('estado', true)->get();
+        $ctlInstitucion = CtlInstitucion::where('estado', true)->get();
 
-        return view('mnt-proyecto.edit', compact('mntProyecto'));
+
+        return view('mnt-proyecto.edit', compact('mntProyecto', 'ctlEstadoProyectos', 'ctlFuenteFondo', 'ctlInstitucion'));
     }
 
     /**

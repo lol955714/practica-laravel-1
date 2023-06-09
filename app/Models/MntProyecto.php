@@ -31,6 +31,8 @@ class MntProyecto extends Model
      * @var string
      */
     protected $table = 'mnt_proyecto';
+    public $timestamps = false;
+
     static $rules = [
 		'nombre' => 'required',
 		'codigo' => 'required',

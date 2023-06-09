@@ -29,6 +29,7 @@ class CtlInstitucion extends Model
      * @var string
      */
     protected $table = 'ctl_institucion';
+    public $timestamps = false;
 
     static $rules = [
 		'nombre' => 'required',
@@ -37,7 +38,6 @@ class CtlInstitucion extends Model
 		'telefono' => 'required',
 		'email' => 'required',
 		'color' => 'required',
-		'estado' => 'required',
     ];
 
     protected $perPage = 20;

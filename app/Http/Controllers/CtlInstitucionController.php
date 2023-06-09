@@ -59,7 +59,7 @@ class CtlInstitucionController extends Controller
 
         $ctlInstitucion = CtlInstitucion::create($request->all());
 
-        return redirect()->route('ctl-institucions.index')
+        return redirect()->route('ctl-institucion.index')
             ->with('success', 'CtlInstitucion created successfully.');
     }
 
@@ -102,7 +102,7 @@ class CtlInstitucionController extends Controller
 
         $ctlInstitucion->update($request->all());
 
-        return redirect()->route('ctl-institucions.index')
+        return redirect()->route('ctl-institucion.index')
             ->with('success', 'CtlInstitucion updated successfully');
     }
 
@@ -115,7 +115,7 @@ class CtlInstitucionController extends Controller
     {
         $ctlInstitucion = CtlInstitucion::find($id)->delete();
 
-        return redirect()->route('ctl-institucions.index')
+        return redirect()->route('ctl-institucion.index')
             ->with('success', 'CtlInstitucion deleted successfully');
     }
 }

@@ -41,9 +41,9 @@
 										<th>Descripcion</th>
 										<th>Color</th>
 										<th>Icono</th>
-										<th>Id Establecimiento</th>
-										<th>Id Fuente Fondos</th>
-										<th>Id Estado Proyecto</th>
+										<th>Establecimiento</th>
+										<th>Fuente Fondos</th>
+										<th>Estado Proyecto</th>
 
                                         <th></th>
                                     </tr>
@@ -58,9 +58,9 @@
 											<td>{{ $mntProyecto->descripcion }}</td>
 											<td>{{ $mntProyecto->color }}</td>
 											<td>{{ $mntProyecto->icono }}</td>
-											<td>{{ $mntProyecto->id_establecimiento }}</td>
-											<td>{{ $mntProyecto->id_fuente_fondos }}</td>
-											<td>{{ $mntProyecto->id_estado_proyecto }}</td>
+											<td>{{ $mntProyecto->ctlInstitucion->nombre }}</td>
+											<td>{{ $mntProyecto->ctlFuenteFondo->nombre }}</td>
+											<td>{{ $mntProyecto->ctlEstadoProyecto->nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('mnt-proyectos.destroy',$mntProyecto->id) }}" method="POST">

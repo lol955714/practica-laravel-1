@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $ctlInstitucion->estado }}
+                            {{ $ctlInstitucion->estado ? 'Activo' : 'Inactivo' }}
                         </div>
 
                     </div>

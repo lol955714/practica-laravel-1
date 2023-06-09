@@ -26,12 +26,16 @@ class CtlEstadoProyecto extends Model
      * @var string
      */
     protected $table = 'ctl_estado_proyecto';
+    public $timestamps = false;
+
     static $rules = [
 		'nombre' => 'required',
 		'codigo' => 'required',
 		'color' => 'required',
 		'icono' => 'required',
-		'estado' => 'required',
+    ];
+    protected $casts = [
+        'estado' => 'boolean',
     ];
 
     protected $perPage = 20;

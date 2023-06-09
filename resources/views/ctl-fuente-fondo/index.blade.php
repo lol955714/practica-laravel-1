@@ -43,7 +43,7 @@
 										<th>Icono</th>
 										<th>Estado</th>
 
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,15 +56,15 @@
 											<td>{{ $ctlFuenteFondo->descripcion }}</td>
 											<td>{{ $ctlFuenteFondo->color }}</td>
 											<td>{{ $ctlFuenteFondo->icono }}</td>
-											<td>{{ $ctlFuenteFondo->estado }}</td>
+											<td>{{ $ctlFuenteFondo->estado ? 'Activo' : 'Inactivo' }}</td>
 
                                             <td>
                                                 <form action="{{ route('ctl-fuente-fondos.destroy',$ctlFuenteFondo->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('ctl-fuente-fondos.show',$ctlFuenteFondo->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('ctl-fuente-fondos.edit',$ctlFuenteFondo->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('ctl-fuente-fondos.show',$ctlFuenteFondo->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Detalle') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('ctl-fuente-fondos.edit',$ctlFuenteFondo->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

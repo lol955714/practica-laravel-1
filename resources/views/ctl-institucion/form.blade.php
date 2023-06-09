@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('estado') }}
-            {{ Form::text('estado', $ctlInstitucion->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
+            <input type="checkbox" name="estado" value="1" {{ $ctlInstitucion->estado ? 'checked' : '' }}>
             {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
